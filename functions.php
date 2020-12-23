@@ -10,3 +10,10 @@ function university_files() {
 // To call the above function, we need to add a WORDPRESS function
 add_action("wp_enqueue_scripts", "university_files");
 
+
+
+function university_features () {
+    add_theme_support("title-tag");
+}
+// To call the above function, for title of all of the pages
+add_action("after_setup_theme", "university_features");
