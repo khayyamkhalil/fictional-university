@@ -15,8 +15,15 @@
         <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
         <div class="site-header__menu group">
           <nav class="main-navigation">
+
+          
+          <!-- <?php 
+            wp_nav_menu(array(
+                "theme_location" => "headerMenuLocation"
+            ));
+          ?> -->
             <ul>
-              <li><a href="<?php echo site_url("/about-us") ?>">About Us</a></li>
+              <li <?php if(is_page("about-us") || wp_get_post_parent_id(0) === 11) echo 'class="current-menu-item"' ?> ><a href="<?php echo site_url("/about-us") ?>">About Us</a></li>
               <li><a href="<?php echo site_url("/programs") ?>">Programs</a></li>
               <li><a href="<?php echo site_url("/events") ?>">Events</a></li>
               <li><a href="<?php echo site_url("/campuses") ?>">Campuses</a></li>
