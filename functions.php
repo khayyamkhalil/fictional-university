@@ -35,6 +35,10 @@ function pageBanner($args = NULL) {
 function university_files() {
     wp_enqueue_style("custom-google-fonts", "//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i");
     wp_enqueue_style("font-awesome", "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+    
+    wp_enqueue_script("googleMap", "//maps.googleapis.com/maps/api/js?key=AIzaSyDHat6gG4n8sFChU1T3ArPA3eLYi_F8qSE" , NULL, "1.0", true);
+    
+    
     if(strstr($_SERVER["SERVER_NAME"], "localhost")) {
         wp_enqueue_script("main-university-js", "http://localhost:3000/bundled.js" , NULL, "1.0", true); 
     } else {
@@ -91,5 +95,15 @@ function university_adjust_queries($query) {
 
 // To make custom query for archiving events 
 add_action("pre_get_posts", "university_adjust_queries");
+
+
+function universityMapKey($api) {
+  $api["key"] = "AIzaSyDHat6gG4n8sFChU1T3ArPA3eLYi_F8qSE";
+  return $api;
+}
+
+
+// To add google map functionality with the help of google API
+add_filter("acf/fields/google_map/api", "universityMapKey");
 
 
